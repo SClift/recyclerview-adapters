@@ -20,7 +20,6 @@ public class LocalAdapterDataObserver extends RecyclerView.AdapterDataObserver {
 
     @Override
     public void onChanged() {
-        super.onChanged();
         CompositeRecyclerAdapter parentAdapter = this.parentAdapter.get();
 
         if (parentAdapter == null) return;
@@ -30,7 +29,6 @@ public class LocalAdapterDataObserver extends RecyclerView.AdapterDataObserver {
 
     @Override
     public void onItemRangeChanged(int positionStart, int itemCount) {
-        super.onItemRangeChanged(positionStart, itemCount);
         CompositeRecyclerAdapter parentAdapter = this.parentAdapter.get();
         LocalAdapter<?> localAdapter = this.localAdapter.get();
 
@@ -42,7 +40,6 @@ public class LocalAdapterDataObserver extends RecyclerView.AdapterDataObserver {
 
     @Override
     public void onItemRangeChanged(int positionStart, int itemCount, Object payload) {
-        super.onItemRangeChanged(positionStart, itemCount, payload);
         CompositeRecyclerAdapter parentAdapter = this.parentAdapter.get();
         LocalAdapter<?> localAdapter = this.localAdapter.get();
 
@@ -54,7 +51,6 @@ public class LocalAdapterDataObserver extends RecyclerView.AdapterDataObserver {
 
     @Override
     public void onItemRangeInserted(int positionStart, int itemCount) {
-        super.onItemRangeInserted(positionStart, itemCount);
         CompositeRecyclerAdapter parentAdapter = this.parentAdapter.get();
         LocalAdapter<?> localAdapter = this.localAdapter.get();
 
@@ -68,8 +64,6 @@ public class LocalAdapterDataObserver extends RecyclerView.AdapterDataObserver {
 
     @Override
     public void onItemRangeRemoved(int positionStart, int itemCount) {
-        super.onItemRangeRemoved(positionStart, itemCount);
-
         CompositeRecyclerAdapter parentAdapter = this.parentAdapter.get();
         LocalAdapter<?> localAdapter = this.localAdapter.get();
 
@@ -81,7 +75,6 @@ public class LocalAdapterDataObserver extends RecyclerView.AdapterDataObserver {
 
     @Override
     public void onItemRangeMoved(int fromPosition, int toPosition, int itemCount) {
-        super.onItemRangeMoved(fromPosition, toPosition, itemCount);
         CompositeRecyclerAdapter parentAdapter = this.parentAdapter.get();
         LocalAdapter<?> localAdapter = this.localAdapter.get();
 

@@ -3,6 +3,7 @@ package com.github.chuross.rx;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
 
 import com.github.chuross.recyclerviewadapters.BaseItemAdapter;
@@ -30,6 +31,11 @@ public abstract class RxItemAdapter<I, VH extends RecyclerView.ViewHolder> exten
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
+        // ChangeAnimation is not supported.
+        if (recyclerView.getItemAnimator() instanceof DefaultItemAnimator) {
+            ((DefaultItemAnimator) recyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
+        }
+
         disposable = flowable.filter(new Predicate<List<I>>() {
             @Override
             public boolean test(List<I> is) throws Exception {
@@ -39,7 +45,7 @@ public abstract class RxItemAdapter<I, VH extends RecyclerView.ViewHolder> exten
             @Override
             public void accept(List<I> is) throws Exception {
                 cachedItems = is;
-                notifyDataSetChanged();
+                notifyItemRangeChanged(0, getItemCount());
                 if (itemDataChangedListener != null) itemDataChangedListener.onDataChanged();
             }
         });
